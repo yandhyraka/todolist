@@ -12,13 +12,19 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1>ToDo List</h1>
-                <ul>
+                <ol>
                     @foreach($todo as $td)
-                    <li>{{ $td->item }}</li>
+                    <form action="{{ url('todo/'.$td->id_todo) }}" method="POST">
+                        {{ csrf_field() }} {{ method_field('DELETE') }}
+                        <li>{{ $td->item }}&nbsp;&nbsp;&nbsp;
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" name="delete" class="btn btn-danger">X</button>
+                        </li>
+                    </form>
                     @endforeach
-                </ul>
+                </ol>
                 <form action="todo" method="post">
-                   {{ csrf_field() }}
+                    {{ csrf_field() }}
                     <div class="row">
                         <input type="text" class="form-control" name="todo_item" placeholder="Item baru...">
                     </div>

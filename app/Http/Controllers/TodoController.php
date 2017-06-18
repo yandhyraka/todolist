@@ -13,7 +13,7 @@ class TodoController extends Controller
         return view('todo')->with('todo', $todo);
     }
 
-    public function edit(Request $request, $id)
+    public function edit(Request $request, Todo $id)
     {
         $todo = Todo::all();
         $todo_edit = Todo::find($id);

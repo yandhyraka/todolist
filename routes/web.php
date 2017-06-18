@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function () {return view('welcome');});
+Route::group(['middleware' => 'auth()'], function() {
+    Route::get('todo', 'TodoController@index');
 });
-
 Route::get('todo', 'TodoController@index');
 Route::post('todo', 'TodoController@store');
 Route::get('todo/{id}/delete', 'TodoController@destroy')->name('todo.delete');
@@ -26,3 +26,8 @@ Route::get('todo', function () {
     return view('todo');
 });
 */
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+

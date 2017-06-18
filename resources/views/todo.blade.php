@@ -21,20 +21,20 @@
                     @if(isset($todo_edit))
                     <form action="{{ route('todo.update') }}" method="post">
                         <input type="hidden" name="id_todo" value="{{ $todo_edit->id_todo}}">
+                    @else
+                    <form action="todo" method="post">
+                    @endif
+                        {{ csrf_field() }}
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="todo_item" placeholder="Item baru..." @if(@isset($todo_edit)) value="{{ $todo_edit->item}}" @endif>
+                        </div>
+                        @if(isset($todo_edit))
+                        <button type="submit" class="btn btn-warning">Update</button>
                         @else
-                        <form action="todo" method="post">
-                            @endif
-                            {{ csrf_field() }}
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="todo_item" placeholder="Item baru..." @if(@isset($todo_edit)) value="{{ $todo_edit->item}}" @endif>
-                            </div>
-                            @if(isset($todo_edit))
-                            <button type="submit" class="btn btn-warning">Update</button>
-                            @else
-                            <button type="submit" class="btn btn-success">Add</button>
-                            @endif
-                        </form>
-                        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+                        <button type="submit" class="btn btn-success">Add</button>
+                        @endif
+                    </form>
+                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
                     </div>
                 </div>
             </div>

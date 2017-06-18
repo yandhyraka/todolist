@@ -27,6 +27,6 @@ class CreateTodosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExist('todos');
+        Schema::dropIfExists('todos');
     }
 }
